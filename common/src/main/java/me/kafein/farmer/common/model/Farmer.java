@@ -95,12 +95,12 @@ public class Farmer implements me.kafein.farmer.api.model.Farmer {
     }
 
     @Override
-    public void incrementMaterialAmount(@NotNull MaterialComponent materialComponent, long amount) {
+    public void increaseMaterialAmount(@NotNull MaterialComponent materialComponent, long amount) {
         materials.put(materialComponent, materials.get(materialComponent) + amount);
     }
 
     @Override
-    public void decrementMaterialAmount(@NotNull MaterialComponent materialComponent, long amount) {
+    public void decreaseMaterialAmount(@NotNull MaterialComponent materialComponent, long amount) {
         materials.put(materialComponent, materials.get(materialComponent) - amount);
     }
 

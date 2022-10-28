@@ -70,9 +70,9 @@ public interface Farmer {
 
     void putMaterial(@NotNull MaterialComponent materialComponent);
 
-    void incrementMaterialAmount(@NotNull MaterialComponent materialComponent, long amount);
+    void increaseMaterialAmount(@NotNull MaterialComponent materialComponent, long amount);
 
-    void decrementMaterialAmount(@NotNull MaterialComponent materialComponent, long amount);
+    void decreaseMaterialAmount(@NotNull MaterialComponent materialComponent, long amount);
 
     void setMaterialAmount(@NotNull MaterialComponent materialComponent, long amount);
 

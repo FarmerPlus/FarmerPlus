@@ -55,7 +55,7 @@ public class DropListener implements Listener {
 
             BukkitMaterialComponentFactory materialComponent = BukkitMaterialComponentFactory.SERIALIZER.deserialize(itemStack);
             if (farmer.hasMaterial(materialComponent)) {
-                farmer.incrementMaterialAmount(materialComponent, (long) itemStack.getAmount());
+                farmer.increaseMaterialAmount(materialComponent, (long) itemStack.getAmount());
                 event.setCancelled(true);
             }
         });
