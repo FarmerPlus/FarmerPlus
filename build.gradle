@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'maven-publish'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    group 'me.kafein'
+    version '1.0.0'
+    sourceCompatibility = 8
+    targetCompatibility = 8
+    compileJava.options.encoding = 'UTF-8'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation('org.spongepowered:configurate-yaml:3.7.2') {
+            exclude group: 'org.yaml', module: 'snakeyaml'
+            exclude group: 'com.google.inject'
+            exclude group: 'com.google.guava'
+        }
+
+        compileOnly 'org.yaml:snakeyaml:1.30'
+        compileOnly 'com.google.guava:guava:31.1-jre'
+        compileOnly 'org.jetbrains:annotations:23.0.0'
+
+    }
+}
+
+gradle.buildFinished {
+    project.buildDir.deleteDir()
+}
+
+publishing {
+    publications {
+        shadow(MavenPublication) {
+            from components.java
+        }
+    }
+}
