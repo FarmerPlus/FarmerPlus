@@ -1,0 +1,7 @@
+dependencies {
+
+}
+
+gradle.buildFinished {
+    project.buildDir.deleteDir()
+}
