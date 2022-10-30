@@ -24,6 +24,7 @@
 
 package me.kafein.farmer.common.model;
 
+import me.kafein.farmer.api.model.member.Member;
 import me.kafein.farmer.api.model.permission.Permission;
 import org.jetbrains.annotations.NotNull;
 
@@ -31,14 +32,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Member implements me.kafein.farmer.api.model.member.Member {
+public class MemberImpl implements Member {
 
     private final List<Permission> permissions = new ArrayList<>();
 
     private final UUID uuid;
     private final String name;
 
-    public Member(UUID uuid, String name) {
+    public MemberImpl(UUID uuid, String name) {
         this.uuid = uuid;
         this.name = name;
     }
