@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package me.kafein.farmer.api.model.npc;
+package me.kafein.farmer.api.model;
 
 import me.kafein.farmer.api.component.LocationComponent;
 
