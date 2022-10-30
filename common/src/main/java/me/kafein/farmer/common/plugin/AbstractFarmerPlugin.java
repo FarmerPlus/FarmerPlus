@@ -24,6 +24,7 @@
 
 package me.kafein.farmer.common.plugin;
 
+import me.kafein.farmer.api.manager.FarmerManager;
 import me.kafein.farmer.common.command.CommandManager;
 import me.kafein.farmer.common.compatibility.RegionCompatibility;
 import me.kafein.farmer.common.config.ConfigManager;
@@ -33,7 +34,7 @@ import org.jetbrains.annotations.Nullable;
 
 public abstract class AbstractFarmerPlugin implements FarmerPlugin {
 
-    private FarmerManagerImpl farmerManagerImpl;
+    private FarmerManager farmerManager;
     private CommandManager commandManager;
     private RegionCompatibility regionCompatibility;
 
@@ -45,7 +46,7 @@ public abstract class AbstractFarmerPlugin implements FarmerPlugin {
 
     @Override
     public void enable() {
-        farmerManagerImpl = new FarmerManagerImpl(this);
+        farmerManager = new FarmerManagerImpl(this);
         commandManager = createCommandManager();
 
         final RegionCompatibility createdRegionCompatibility = createRegionCompatibility();
@@ -59,7 +60,7 @@ public abstract class AbstractFarmerPlugin implements FarmerPlugin {
 
     @Override
     public void disable() {
-        farmerManagerImpl.saveAll();
+        farmerManager.saveAll();
 
     }
 
@@ -79,8 +80,8 @@ public abstract class AbstractFarmerPlugin implements FarmerPlugin {
     }
 
     @Override
-    public @NotNull FarmerManagerImpl getFarmerManager() {
-        return farmerManagerImpl;
+    public @NotNull FarmerManager getFarmerManager() {
+        return farmerManager;
     }
 
     @Override

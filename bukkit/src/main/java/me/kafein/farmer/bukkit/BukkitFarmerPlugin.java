@@ -64,7 +64,7 @@ public class BukkitFarmerPlugin extends AbstractFarmerPlugin {
     protected @NotNull CommandManager createCommandManager() {
         final CompletionProvider completionProvider = new BukkitCompletionProvider();
 
-        final CommandManager commandManager = new BukkitCommandManager(getPlugin(), completionProvider);
+        final CommandManager commandManager = new BukkitCommandManager(getRoot(), completionProvider);
         commandManager.initialize();
 
         return commandManager;
@@ -77,7 +77,7 @@ public class BukkitFarmerPlugin extends AbstractFarmerPlugin {
         return factory.create(this);
     }
 
-    protected Plugin getPlugin() {
+    public Plugin getRoot() {
         return BukkitPluginLoader.getPlugin(BukkitPluginLoader.class);
     }
 

@@ -24,13 +24,13 @@
 
 package me.kafein.farmer.common.plugin;
 
+import me.kafein.farmer.api.manager.FarmerManager;
 import me.kafein.farmer.common.command.CommandManager;
 import me.kafein.farmer.common.compatibility.RegionCompatibility;
-import me.kafein.farmer.common.manager.FarmerManagerImpl;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public interface FarmerPlugin {
+public interface FarmerPlugin  {
 
     void load();
 
@@ -42,7 +42,7 @@ public interface FarmerPlugin {
     RegionCompatibility getRegionCompatibility();
 
     @NotNull
-    FarmerManagerImpl getFarmerManager();
+    FarmerManager getFarmerManager();
 
     @NotNull
     CommandManager getCommandManager();
