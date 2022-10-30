@@ -25,14 +25,16 @@
 package me.kafein.farmer.common.manager;
 
 import me.kafein.farmer.api.component.LocationComponent;
+import me.kafein.farmer.api.manager.FarmerManager;
 import me.kafein.farmer.api.model.Farmer;
+import me.kafein.farmer.common.model.FarmerImpl;
 import me.kafein.farmer.common.plugin.AbstractFarmerPlugin;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 import java.util.UUID;
 
-public class FarmerManagerImpl extends AbstractManager<UUID, Farmer> implements me.kafein.farmer.api.manager.FarmerManager {
+public class FarmerManagerImpl extends AbstractManager<UUID, Farmer> implements FarmerManager {
 
     private final AbstractFarmerPlugin plugin;
 
@@ -53,6 +55,31 @@ public class FarmerManagerImpl extends AbstractManager<UUID, Farmer> implements 
     @Override
     public void saveAll() {
 
+    }
+
+    @Override
+    public @NotNull Farmer createFarmer(@NotNull UUID uuid) {
+        return new FarmerImpl(uuid);
+    }
+
+    @Override
+    public @NotNull Farmer createAndPutFarmer(@NotNull UUID uuid) {
+        final Farmer farmer = createFarmer(uuid);
+
+        return put(uuid, farmer);
+    }
+
+    @Override
+    public Optional<Farmer> findByLocation(@NotNull LocationComponent locationComponent) {
+        Optional<Farmer> optionalFarmer = findAll().stream()
+                .filter(Farmer::hasCuboid)
+                .filter(farmer -> farmer.getFarmerLocation().getWorldName().equals(locationComponent.getWorldName()))
+                .filter(farmer -> farmer.getCuboid().isInCuboid(locationComponent))
+                .findFirst();
+
+        return optionalFarmer.isPresent()
+                ? optionalFarmer
+                : plugin.getRegionCompatibility().matchFarmer(plugin, locationComponent);
     }
 
     @Override

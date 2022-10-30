@@ -39,6 +39,14 @@ public interface FarmerManager {
 
     void saveAll();
 
+    @NotNull
+    Farmer createFarmer(@NotNull UUID uuid);
+
+    @NotNull
+    Farmer createAndPutFarmer(@NotNull UUID uuid);
+
+    Optional<Farmer> findByLocation(@NotNull LocationComponent locationComponent);
+
     Optional<Farmer> findByFarmerLocation(@NotNull LocationComponent locationComponent);
 
     Optional<Farmer> findByRegionLocation(@NotNull LocationComponent locationComponent);

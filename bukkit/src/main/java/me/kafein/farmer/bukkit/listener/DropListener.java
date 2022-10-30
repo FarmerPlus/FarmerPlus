@@ -50,12 +50,12 @@ public class DropListener implements Listener {
         if (item.getPickupDelay() == 40) return;
 
         LocationComponent locationComponent = BukkitLocationComponentSerializer.deserialize(item.getLocation());
-        plugin.getRegionCompatibility().matchFarmer(plugin, locationComponent).ifPresent(farmer -> {
+        plugin.getFarmerManager().findByLocation(locationComponent).ifPresent(farmer -> {
             ItemStack itemStack = item.getItemStack();
 
             BukkitMaterialComponentFactory materialComponent = BukkitMaterialComponentFactory.SERIALIZER.deserialize(itemStack);
             if (farmer.hasMaterial(materialComponent)) {
-                farmer.increaseMaterialAmount(materialComponent, (long) itemStack.getAmount());
+                farmer.increaseMaterialAmount(materialComponent, itemStack.getAmount());
                 event.setCancelled(true);
             }
         });
