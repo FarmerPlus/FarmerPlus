@@ -40,8 +40,7 @@ public class BukkitRegionCompatibilityFactory implements RegionCompatibilityFact
     private static final String COMPATIBILITY_PACKAGE = "me.kafein.farmer.compatibility.";
 
     @Override
-    @Nullable
-    public RegionCompatibility create(@NotNull FarmerPlugin farmerPlugin) {
+    public @Nullable RegionCompatibility create(@NotNull FarmerPlugin farmerPlugin) {
         RegionCompatibilityType type = matchType();
         if (type == null) {
             return null;
@@ -60,8 +59,7 @@ public class BukkitRegionCompatibilityFactory implements RegionCompatibilityFact
     }
 
     @Override
-    @Nullable
-    public RegionCompatibilityType matchType() {
+    public @Nullable RegionCompatibilityType matchType() {
         PluginManager pluginManager = Bukkit.getPluginManager();
 
         for (RegionCompatibilityType compatibilityType : RegionCompatibilityType.values()) {

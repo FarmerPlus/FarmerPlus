@@ -3,7 +3,5 @@ include 'api'
 include 'common'
 include 'bukkit'
 include 'compatibility'
-include 'nms'
 include 'compatibility:askyblock'
 include 'compatibility:bentobox'
-

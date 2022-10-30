@@ -24,7 +24,7 @@
 
 package me.kafein.farmer.common.npc;
 
-import me.kafein.farmer.api.model.npc.Npc;
+import me.kafein.farmer.api.model.Npc;
 
 public abstract class AbstractNpc implements Npc {
 

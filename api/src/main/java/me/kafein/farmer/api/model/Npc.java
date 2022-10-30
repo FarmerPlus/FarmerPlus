@@ -22,49 +22,14 @@
  * SOFTWARE.
  */
 
-package me.kafein.farmer.common.model;
+package me.kafein.farmer.api.model;
 
-import me.kafein.farmer.api.model.permission.Permission;
-import org.jetbrains.annotations.NotNull;
+import me.kafein.farmer.api.component.LocationComponent;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+public interface Npc {
 
-public class Member implements me.kafein.farmer.api.model.member.Member {
+    void spawn(String name, String skin, LocationComponent location);
 
-    private final List<Permission> permissions = new ArrayList<>();
+    void destroy();
 
-    private final UUID uuid;
-    private final String name;
-
-    public Member(UUID uuid, String name) {
-        this.uuid = uuid;
-        this.name = name;
-    }
-
-    @Override
-    public @NotNull UUID getUUID() {
-        return uuid;
-    }
-
-    @Override
-    public @NotNull String getName() {
-        return name;
-    }
-
-    @Override
-    public void putPermission(@NotNull Permission permission) {
-        permissions.add(permission);
-    }
-
-    @Override
-    public void removePermission(@NotNull Permission permission) {
-        permissions.remove(permission);
-    }
-
-    @Override
-    public boolean hasPermission(@NotNull Permission permission) {
-        return permissions.contains(permission);
-    }
 }

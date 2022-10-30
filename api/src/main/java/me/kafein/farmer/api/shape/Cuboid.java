@@ -25,6 +25,7 @@
 package me.kafein.farmer.api.shape;
 
 import com.google.common.base.Preconditions;
+import me.kafein.farmer.api.component.LocationComponent;
 import org.jetbrains.annotations.NotNull;
 
 public class Cuboid {
@@ -50,6 +51,10 @@ public class Cuboid {
 
     public boolean isInCuboid(int x, int z) {
         return x >= minX && x <= maxX && z >= minZ && z <= maxZ;
+    }
+
+    public boolean isInCuboid(LocationComponent locationComponent) {
+        return isInCuboid(locationComponent.getX(), locationComponent.getZ());
     }
 
     public int getMinX() {
