@@ -26,6 +26,7 @@ package me.kafein.farmer.common.model;
 
 import me.kafein.farmer.api.component.LocationComponent;
 import me.kafein.farmer.api.component.MaterialComponent;
+import me.kafein.farmer.api.model.Farmer;
 import me.kafein.farmer.api.model.member.Member;
 import me.kafein.farmer.api.shape.Cuboid;
 import org.jetbrains.annotations.NotNull;
@@ -33,7 +34,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
-public class Farmer implements me.kafein.farmer.api.model.Farmer {
+public class FarmerImpl implements Farmer {
 
     private final Map<MaterialComponent, Long> materials = new HashMap<>();
     private final List<Member> members = new ArrayList<>();
@@ -46,7 +47,7 @@ public class Farmer implements me.kafein.farmer.api.model.Farmer {
 
     private final UUID uuid;
 
-    public Farmer(UUID uuid) {
+    public FarmerImpl(UUID uuid) {
         this.uuid = uuid;
     }
 
@@ -126,6 +127,11 @@ public class Farmer implements me.kafein.farmer.api.model.Farmer {
         return members.stream()
                 .filter(member -> member.getName().equals(name))
                 .findFirst();
+    }
+
+    @Override
+    public @NotNull Member createMember(@NotNull UUID uuid, @NotNull String name) {
+        return new MemberImpl(uuid, name);
     }
 
     @Override

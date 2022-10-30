@@ -82,6 +82,9 @@ public interface Farmer {
 
     Optional<Member> findMemberByName(@NotNull String name);
 
+    @NotNull
+    Member createMember(@NotNull UUID uuid, @NotNull String name);
+
     void putMember(@NotNull Member member);
 
     void removeMember(@NotNull Member member);
