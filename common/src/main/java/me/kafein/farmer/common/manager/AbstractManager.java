@@ -45,8 +45,10 @@ public abstract class AbstractManager<K, V> {
                 .orElseThrow(() -> new IllegalArgumentException("Value not found"));
     }
 
-    public void put(@NotNull K key, @NotNull V value) {
+    public V put(@NotNull K key, @NotNull V value) {
         map.put(key, value);
+
+        return value;
     }
 
     public void remove(@NotNull K key) {
