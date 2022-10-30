@@ -35,6 +35,8 @@ import java.util.Objects;
 
 public class BukkitLocationComponentSerializer {
 
+    private BukkitLocationComponentSerializer() {}
+
     @NotNull
     public static Location serialize(@NotNull LocationComponent locationComponent) {
         @Nullable World world = Bukkit.getWorld(locationComponent.getWorldName());
